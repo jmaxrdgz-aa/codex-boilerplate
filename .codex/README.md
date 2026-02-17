@@ -14,6 +14,14 @@
    - update memory files when applicable (`.codex/memory/decisions.md`, `.codex/memory/gotchas.md`)
    - commit code changes and `.codex/` note/memory updates together
 6) Before you finish, paste the completed checklist from `.codex/templates/task_close.md` into the active inbox task file.
+7) For risky changes, require a Reviewer pass before merge.
+   - Risky changes include: auth/permissions, migrations, infra/deploy, and anything user-facing or hard to rollback.
+   - Workflow:
+     - Builder agent does the work and commits.
+     - Reviewer agent gets only:
+       - the diff (`git diff main...HEAD`)
+       - the task goal
+     - Reviewer agent is instructed to be adversarial and can return `APPROVE` or `REQUEST_CHANGES`.
 
 ## Output format for each task
 - Plan (short)
